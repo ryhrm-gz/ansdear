@@ -1,4 +1,9 @@
-import { IconAlertCircle, IconComet } from "@tabler/icons-react";
+import {
+  IconAlertCircle,
+  IconArrowRight,
+  IconComet,
+} from "@tabler/icons-react";
+import Link from "next/link";
 import { ReactNode } from "react";
 
 const getIconColor = (color: string) => {
@@ -110,15 +115,31 @@ export default function About() {
           >
             <div className="leading-6 text-sm">
               ANSD周知のためのパンフレットができました！
+              <br />
+              ご自由にお使いください。
             </div>
             <a
               href="/pamphlet.pdf"
               target="_blank"
-              className="inline-block rounded px-6 text-sm py-3 bg-black text-white mt-3 font-bold"
+              className="inline-block rounded px-6 text-sm py-3 bg-green-600 text-white mt-3 font-bold"
             >
               ダウンロードはこちら
             </a>
           </Message>
+        </div>
+        <div className="text-center mt-20">
+          <p className="text-sm text-gray-500 mb-4">
+            ANSDについて詳しく知りたい方はこちら
+          </p>
+          <Link
+            href="/links"
+            className="inline-block bg-amber-400 hover:bg-amber-300 font-bold py-4 px-8 border-b-4 border-amber-600 hover:border-amber-500 rounded"
+          >
+            <div className="flex items-center gap-2">
+              お役立ちリンク集
+              <IconArrowRight />
+            </div>
+          </Link>
         </div>
       </section>
     </main>

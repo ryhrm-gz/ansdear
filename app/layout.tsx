@@ -4,10 +4,12 @@ import Link from "next/link";
 import {
   IconBulb,
   IconExternalLink,
+  IconMessageCircle,
   IconNews,
+  IconNotebook,
   IconQuestionMark,
 } from "@tabler/icons-react";
-import { ReactNode } from "react";
+import { HTMLAttributeAnchorTarget, ReactNode } from "react";
 import Image from "next/image";
 
 const noto_sans_jp = Noto_Sans_JP({
@@ -31,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={`${noto_sans_jp.variable}`}>
-      <body>
+      <body className="bg-amber-50">
         <Header />
         {children}
         <Footer />
@@ -43,31 +45,69 @@ export default function RootLayout({
 function Header() {
   return (
     <header>
-      <div className="flex flex-col sm:flex-row justify-between sm:items-center max-w-7xl mx-auto py-5 px-4 gap-8">
-        <Link href="/">
-          <h1 className="text-2xl font-bold">ANSDear!</h1>
-          <p className="text-xs text-gray-600 mt-1">
+      <div className="flex flex-col md:flex-row justify-between md:items-center max-w-7xl mx-auto py-5  gap-8">
+        <div className="flex flex-row md:flex-col items-start justify-between px-4">
+          <Link href="/">
+            <h1 className="text-2xl font-bold">ANSDear!</h1>
+          </Link>
+          <p className="text-xs text-gray-600 mt-1 text-right md:text-left">
             新しい聴覚障害
             <br />
             「オーディトリー​・ニューロパチー」
             <br />
             を知るポータルサイト
           </p>
-        </Link>
+        </div>
         <nav>
-          <ul className="flex justify-around gap-5">
+          <ul className="grid grid-cols-2 grid-rows-2 md:grid-cols-none md:grid-rows-none md:flex gap-px md:gap-4 border-t border-b border-gray-200 md:border-0 bg-gray-200 md:bg-transparent">
             <li>
               <HeaderNavItem
                 href="/about"
                 label="ANSDってなに？"
-                icon={<IconQuestionMark stroke={1.5} size={28} />}
+                icon={
+                  <IconQuestionMark
+                    stroke={1.5}
+                    size={24}
+                    className="inline-block"
+                  />
+                }
               />
             </li>
             <li>
               <HeaderNavItem
                 href="/links"
                 label="お役立ちリンク集"
-                icon={<IconBulb stroke={1.5} size={28} />}
+                icon={
+                  <IconBulb stroke={1.5} size={24} className="inline-block" />
+                }
+              />
+            </li>
+            <li>
+              <HeaderNavItem
+                href="https://ameblo.jp/ansd-auditoryneuropathy"
+                label="ブログ"
+                target="_blank"
+                icon={
+                  <IconNotebook
+                    stroke={1.5}
+                    size={24}
+                    className="inline-block"
+                  />
+                }
+              />
+            </li>
+            <li>
+              <HeaderNavItem
+                href="https://line.me/ti/g2/7xyJbAON6disC96ut2RWPsF_CxeY-gx8iqYffg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
+                label="オープンチャット"
+                target="_blank"
+                icon={
+                  <IconMessageCircle
+                    stroke={1.5}
+                    size={24}
+                    className="inline-block"
+                  />
+                }
               />
             </li>
           </ul>
@@ -81,16 +121,18 @@ function HeaderNavItem({
   href,
   label,
   icon,
+  target,
 }: {
   href: string;
   label: string;
   icon: JSX.Element;
+  target?: HTMLAttributeAnchorTarget;
 }) {
   return (
-    <Link href={href}>
-      <div className="flex flex-col items-center gap-1">
+    <Link href={href} target={target}>
+      <div className="text-center bg-white md:bg-transparent px-2 py-2">
         {icon}
-        <div className="text-sm">{label}</div>
+        <div className="text-xs mt-1">{label}</div>
       </div>
     </Link>
   );
@@ -98,7 +140,7 @@ function HeaderNavItem({
 
 function Footer() {
   return (
-    <footer className="bg-gray-100 px-4 pt-10 pb-4 md:pt-16">
+    <footer className="bg-gray-50 px-4 pt-10 pb-4 md:pt-16">
       <div className="max-w-4xl mx-auto">
         <div>
           <h2 className="text-gray-500 text-center">

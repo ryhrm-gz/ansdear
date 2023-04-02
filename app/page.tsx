@@ -1,3 +1,4 @@
+import { IconArrowRight } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -52,9 +53,12 @@ export default function Home() {
       <div className="text-center py-14 md:py-28">
         <Link
           href="/about"
-          className="inline-block rounded px-12 py-3 bg-black text-white font-bold"
+          className="inline-block bg-amber-400 hover:bg-amber-300 font-bold py-4 px-8 border-b-4 border-amber-600 hover:border-amber-500 rounded"
         >
-          ANSDってなに？
+          <div className="flex items-center gap-2">
+            ANSDってなに？
+            <IconArrowRight />
+          </div>
         </Link>
       </div>
     </main>
